@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle">
+   <string>CG_3DToolKit Viewer</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QFrame" name="GLframe">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame{
+	border: 2px solid white;
+	border-radius: 10px;
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 rgb(10,102,151), stop:1 rgb(0,0,0));
+ }
+
+</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_file">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="action_new"/>
+    <addaction name="action_open"/>
+    <addaction name="action_openImage"/>
+    <addaction name="action_openPointCloud"/>
+    <addaction name="action_savePointCloud"/>
+    <addaction name="separator"/>
+    <addaction name="action_exit"/>
+   </widget>
+   <widget class="QMenu" name="menu_help">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+    <addaction name="action_about"/>
+   </widget>
+   <widget class="QMenu" name="menu_plugins">
+    <property name="title">
+     <string>插件</string>
+    </property>
+   </widget>
+   <addaction name="menu_file"/>
+   <addaction name="menu_plugins"/>
+   <addaction name="menu_help"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_new"/>
+   <addaction name="action_open"/>
+   <addaction name="action_openImage"/>
+   <addaction name="action_openPointCloud"/>
+   <addaction name="action_savePointCloud"/>
+   <addaction name="separator"/>
+   <addaction name="action_exit"/>
+   <addaction name="separator"/>
+   <addaction name="action_ClearAll"/>
+   <addaction name="action_FullScreen"/>
+   <addaction name="action_Elevation"/>
+   <addaction name="action_Depth"/>
+   <addaction name="action_Intensity"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_tools">
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_GlobalZoom"/>
+   <addaction name="action_SetPivotOn"/>
+   <addaction name="action_SetPivotRotationOnly"/>
+   <addaction name="action_SetPivotOff"/>
+   <addaction name="action_PointPicking"/>
+   <addaction name="separator"/>
+   <addaction name="action_SetViewTop"/>
+   <addaction name="action_SetViewFront"/>
+   <addaction name="action_SetViewLeft"/>
+   <addaction name="action_SetViewBack"/>
+   <addaction name="action_SetViewRight"/>
+   <addaction name="action_SetViewBottom"/>
+   <addaction name="action_SetViewIso1"/>
+   <addaction name="action_SetViewIso2"/>
+   <addaction name="separator"/>
+   <addaction name="action_Console"/>
+   <addaction name="separator"/>
+  </widget>
+  <action name="action_new">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/icons/document-new.png</normaloff>:/CC/res/images/icons/document-new.png</iconset>
+   </property>
+   <property name="text">
+    <string>新建工程</string>
+   </property>
+   <property name="toolTip">
+    <string>新建工程</string>
+   </property>
+  </action>
+  <action name="action_open">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/icons/document-open.png</normaloff>:/CC/res/images/icons/document-open.png</iconset>
+   </property>
+   <property name="text">
+    <string>打开工程</string>
+   </property>
+   <property name="toolTip">
+    <string>打开工程</string>
+   </property>
+  </action>
+  <action name="action_exit">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/icons/ccExit.png</normaloff>:/CC/res/images/icons/ccExit.png</iconset>
+   </property>
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="action_about">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/icons/ccQuestion.png</normaloff>:/CC/res/images/icons/ccQuestion.png</iconset>
+   </property>
+   <property name="text">
+    <string>关于</string>
+   </property>
+  </action>
+  <action name="action_SetViewTop">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccViewZpos.png</normaloff>:/CC/res/images/ccViewZpos.png</iconset>
+   </property>
+   <property name="text">
+    <string>俯视图</string>
+   </property>
+   <property name="toolTip">
+    <string>俯视图</string>
+   </property>
+  </action>
+  <action name="action_SetViewFront">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccViewYpos.png</normaloff>:/CC/res/images/ccViewYpos.png</iconset>
+   </property>
+   <property name="text">
+    <string>正视图</string>
+   </property>
+   <property name="toolTip">
+    <string>正视国</string>
+   </property>
+  </action>
+  <action name="action_SetViewLeft">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccViewXpos.png</normaloff>:/CC/res/images/ccViewXpos.png</iconset>
+   </property>
+   <property name="text">
+    <string>左视图</string>
+   </property>
+   <property name="toolTip">
+    <string>左视图</string>
+   </property>
+  </action>
+  <action name="action_SetViewBack">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccViewYneg.png</normaloff>:/CC/res/images/ccViewYneg.png</iconset>
+   </property>
+   <property name="text">
+    <string>后视图</string>
+   </property>
+   <property name="toolTip">
+    <string>后视图</string>
+   </property>
+  </action>
+  <action name="action_SetViewRight">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccViewXneg.png</normaloff>:/CC/res/images/ccViewXneg.png</iconset>
+   </property>
+   <property name="text">
+    <string>右视图</string>
+   </property>
+   <property name="toolTip">
+    <string>右视图</string>
+   </property>
+  </action>
+  <action name="action_SetViewBottom">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccViewZneg.png</normaloff>:/CC/res/images/ccViewZneg.png</iconset>
+   </property>
+   <property name="text">
+    <string>底视图</string>
+   </property>
+   <property name="toolTip">
+    <string>底视图</string>
+   </property>
+  </action>
+  <action name="action_SetViewIso1">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccViewIso1.png</normaloff>:/CC/res/images/ccViewIso1.png</iconset>
+   </property>
+   <property name="text">
+    <string>前等轴</string>
+   </property>
+   <property name="toolTip">
+    <string>前等轴</string>
+   </property>
+  </action>
+  <action name="action_SetViewIso2">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccViewIso2.png</normaloff>:/CC/res/images/ccViewIso2.png</iconset>
+   </property>
+   <property name="text">
+    <string>后等轴</string>
+   </property>
+   <property name="toolTip">
+    <string>后等轴</string>
+   </property>
+  </action>
+  <action name="action_GlobalZoom">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccGlobalZoom.png</normaloff>:/CC/res/images/ccGlobalZoom.png</iconset>
+   </property>
+   <property name="text">
+    <string>全局缩放</string>
+   </property>
+   <property name="toolTip">
+    <string>全局缩放</string>
+   </property>
+  </action>
+  <action name="action_SetPivotOn">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccPivotOn.png</normaloff>:/CC/res/images/ccPivotOn.png</iconset>
+   </property>
+   <property name="text">
+    <string>轨迹球开启</string>
+   </property>
+   <property name="toolTip">
+    <string>轨迹球开启</string>
+   </property>
+  </action>
+  <action name="action_SetPivotOff">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccPivotOff.png</normaloff>:/CC/res/images/ccPivotOff.png</iconset>
+   </property>
+   <property name="text">
+    <string>轨迹球关闭</string>
+   </property>
+   <property name="toolTip">
+    <string>轨迹球关闭</string>
+   </property>
+  </action>
+  <action name="action_openImage">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccGrid.png</normaloff>:/CC/res/images/ccGrid.png</iconset>
+   </property>
+   <property name="text">
+    <string>打开图像</string>
+   </property>
+   <property name="toolTip">
+    <string>打开图像</string>
+   </property>
+  </action>
+  <action name="action_openPointCloud">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccOpen.png</normaloff>:/CC/res/images/ccOpen.png</iconset>
+   </property>
+   <property name="text">
+    <string>打开点云</string>
+   </property>
+   <property name="toolTip">
+    <string>打开点云</string>
+   </property>
+  </action>
+  <action name="action_savePointCloud">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccSave.png</normaloff>:/CC/res/images/ccSave.png</iconset>
+   </property>
+   <property name="text">
+    <string>保存点云</string>
+   </property>
+   <property name="toolTip">
+    <string>保存点云</string>
+   </property>
+  </action>
+  <action name="action_FullScreen">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccFullScreen.png</normaloff>:/CC/res/images/ccFullScreen.png</iconset>
+   </property>
+   <property name="text">
+    <string>全屏显示</string>
+   </property>
+   <property name="toolTip">
+    <string>全屏显示</string>
+   </property>
+  </action>
+  <action name="action_SetPivotRotationOnly">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccPivotAuto.png</normaloff>:/CC/res/images/ccPivotAuto.png</iconset>
+   </property>
+   <property name="text">
+    <string>轨迹球转动时显示</string>
+   </property>
+   <property name="toolTip">
+    <string>轨迹球转动时显示</string>
+   </property>
+  </action>
+  <action name="action_Elevation">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/icons/display_height.png</normaloff>:/CC/res/images/icons/display_height.png</iconset>
+   </property>
+   <property name="text">
+    <string>高程渲染</string>
+   </property>
+   <property name="toolTip">
+    <string>高程渲染</string>
+   </property>
+  </action>
+  <action name="action_Depth">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/icons/display_category.png</normaloff>:/CC/res/images/icons/display_category.png</iconset>
+   </property>
+   <property name="text">
+    <string>深度渲染</string>
+   </property>
+   <property name="toolTip">
+    <string>深度渲染</string>
+   </property>
+  </action>
+  <action name="action_Intensity">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/icons/display_intensity.png</normaloff>:/CC/res/images/icons/display_intensity.png</iconset>
+   </property>
+   <property name="text">
+    <string>纹理渲染</string>
+   </property>
+   <property name="toolTip">
+    <string>纹理渲染</string>
+   </property>
+  </action>
+  <action name="action_Console">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/icons/ccConsole.png</normaloff>:/CC/res/images/icons/ccConsole.png</iconset>
+   </property>
+   <property name="text">
+    <string>控制台</string>
+   </property>
+   <property name="toolTip">
+    <string>控制台</string>
+   </property>
+  </action>
+  <action name="action_PointPicking">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccPointPicking.png</normaloff>:/CC/res/images/ccPointPicking.png</iconset>
+   </property>
+   <property name="text">
+    <string>点拾取</string>
+   </property>
+   <property name="toolTip">
+    <string>点拾取</string>
+   </property>
+  </action>
+  <action name="action_ClearAll">
+   <property name="icon">
+    <iconset resource="icones.qrc">
+     <normaloff>:/CC/res/images/ccDelete.png</normaloff>:/CC/res/images/ccDelete.png</iconset>
+   </property>
+   <property name="text">
+    <string>清除所有</string>
+   </property>
+   <property name="toolTip">
+    <string>清除所有</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="icones.qrc"/>
+ </resources>
+ <connections/>
+</ui>
