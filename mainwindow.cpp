@@ -353,6 +353,8 @@ void MainWindow::loadPlugins()
                 v.setValue(stdPlugin);
                 action->setData(v);
 
+                //connect(action, &QAction::triggered, this, [&](){stdPlugin->start();});
+
                 ui->menu_plugins->addAction(action);
                 ui->menu_plugins->setEnabled(true);
                 ui->menu_plugins->setVisible(true);
@@ -408,6 +410,15 @@ void MainWindow::loadPlugins()
 			}
         }
     }
+
+    //add this a remove GL filter
+    QAction* action = new QAction("Remove", this);
+    action->setToolTip("Remove GL Filter");
+    action->setIcon(QIcon(":/CC/res/images/noFilter.png"));
+
+    connect(action, &QAction::triggered, this, &MainWindow::doDisableGLFilter);
+
+    ui->menu_plugins->addAction(action);
 }
 
 void MainWindow::updateGLFrameGradient()

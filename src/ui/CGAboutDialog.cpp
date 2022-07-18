@@ -24,7 +24,7 @@ void CGAboutDialog::InitUi()
     setWindowIcon(QIcon(":/icon/logo.png"));
     resize(300, 200);
 
-    m_pAboutLb = new QLabel(tr(u8"CG_3DToolKit"), this);
+    m_pAboutLb = new QLabel(tr(u8"CG_3DToolKit Viewer"), this);
     m_pVersion = new QLabel(tr(u8"版本：Ver2205 FE"), this);
     m_pOKBtn = new QPushButton(tr(u8"确定"), this);
     m_pOKBtn->setIcon(QIcon(":/icon/logo.png"));
