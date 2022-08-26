@@ -506,7 +506,16 @@ void MainWindow::on_action_about_triggered()
 
 void MainWindow::on_action_openImage_triggered()
 {
+    QStringList FileNames = QFileDialog::getOpenFileNames(this, tr(u8"打开图像文件"), ".", "*bmp *png *jpg *jpeg *tif *tiff");
 
+    if (FileNames.isEmpty())
+    {
+        QMessageBox::information(this, tr(u8"信息"), tr(u8"请选择图像文件！"));
+    }
+    else
+    {
+        addToDB(FileNames);
+    }
 }
 
 void MainWindow::on_action_openPointCloud_triggered()
