@@ -1087,6 +1087,22 @@ bool ccGLWindow::event(QEvent* evt)
 	}
 	return true;
 
+    case::QEvent::KeyPress:
+    {
+       if (static_cast<QKeyEvent*>(evt)->key() == Qt::Key_F11)
+       {
+           if (m_exclusiveFullscreen)
+           {
+               toggleExclusiveFullScreen(false);
+           }
+           else
+           {
+              toggleExclusiveFullScreen(true);
+           }
+       }
+    }
+    return true;
+
 	case QEvent::TouchUpdate:
 	{
 		//Gesture update

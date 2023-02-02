@@ -51,7 +51,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_file">
@@ -355,6 +355,9 @@
    </property>
    <property name="toolTip">
     <string>全屏显示</string>
+   </property>
+   <property name="shortcut">
+    <string>F11</string>
    </property>
   </action>
   <action name="action_SetPivotRotationOnly">
